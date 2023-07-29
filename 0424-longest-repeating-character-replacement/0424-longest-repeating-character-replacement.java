@@ -18,7 +18,7 @@ class Solution {
             mostFreq = Math.max(mostFreq, map.get(arr[right]));
             
             //shrink the window if we need to replace more than k char
-            while ((right - left + 1) - mostFreq > k) {    //** maxLen - mostFreq <= k
+            if ((right - left + 1) - mostFreq > k) {    //** maxLen - mostFreq <= k
                 map.put(arr[left], map.get(arr[left]) - 1);
                 left++;
             }
