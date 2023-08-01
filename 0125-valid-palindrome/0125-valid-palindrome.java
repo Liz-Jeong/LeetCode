@@ -24,3 +24,14 @@ class Solution {
         return true;
     }
 }
+
+// Alphanumeric characters -> Character(isLetter), Character(isDigit)
+// 2 pointers from the beginning and the end
+
+
+
+
+
+
+
+
