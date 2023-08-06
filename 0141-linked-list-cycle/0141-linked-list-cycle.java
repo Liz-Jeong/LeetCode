@@ -11,14 +11,23 @@
  */
 public class Solution {
     public boolean hasCycle(ListNode head) {
-        // 마지막 포인터가 null을 가리키지 않는다.
-        // cycle이 있는 경우 특정 인덱스를 가리킨다.
-        // last node의 index가 앞의 node를 가리키는지를 찾는다.
-        // 각 노드의 next가 해당 노드의 index보다 크면 사이클?
-        
         // base case
         if(head == null) return false;
         
+        // 1. SET : TC - O(N), SC - O(N)
+        Set<ListNode> set = new HashSet<>();
+        
+        while(head != null) {
+            if(set.contains(head)) return true;
+            
+            set.add(head);
+            head = head.next;
+        }
+        
+        return false;
+        
+        // 2. TC - O(N), SC - O(1)
+        /*
         // define slow and fast
         ListNode slow = head, fast = head;
         
@@ -32,5 +41,6 @@ public class Solution {
         
         // there is no cycle
         return false;
+        */
     }
 }
