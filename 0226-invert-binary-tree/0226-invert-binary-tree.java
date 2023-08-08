@@ -19,34 +19,36 @@ class Solution {
         // basic case
         if(root == null) return null;
         
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
+        // solution1
+//         Queue<TreeNode> queue = new LinkedList<>();
+//         queue.add(root);
         
-        TreeNode tmp = new TreeNode();
+//         TreeNode tmp = new TreeNode();
         
-        while(!queue.isEmpty()) {
-            
-            int level = queue.size();
-            
-            // search child nodes
-            for(int i = 0; i < level; i++) {
+//         while(!queue.isEmpty()) {
+//             int level = queue.size();
+//             // search child nodes
+//             for(int i = 0; i < level; i++) {
                 
-                if(queue.peek() != null) {
-                    tmp = queue.peek().left;
+//                 if(queue.peek() != null) {
+//                     tmp = queue.peek().left;
                     
-                    queue.peek().left = queue.peek().right;
-                    queue.add(queue.peek().left);
+//                     queue.peek().left = queue.peek().right;
+//                     queue.add(queue.peek().left);
                     
-                    queue.peek().right = tmp;
-                    queue.add(queue.peek().right);
-
-                }
-                queue.poll();
+//                     queue.peek().right = tmp;
+//                     queue.add(queue.peek().right);
+//                 }
                 
-            }
+//                 queue.poll();
+//             }
             
-        }
+//         }
         
+        //solution2. code improvement(Recursive)
+        TreeNode tmp = root.left;
+        root.left = invertTree(root.right);
+        root.right = invertTree(tmp);
         return root;
     }
 }
