@@ -22,8 +22,7 @@ class Solution {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         
-        TreeNode leftTmp = new TreeNode();
-        TreeNode rightTmp = new TreeNode();
+        TreeNode tmp = new TreeNode();
         
         while(!queue.isEmpty()) {
             
@@ -33,14 +32,14 @@ class Solution {
             for(int i = 0; i < level; i++) {
                 
                 if(queue.peek() != null) {
-                    leftTmp = queue.peek().left;
-                    rightTmp = queue.peek().right;
+                    tmp = queue.peek().left;
                     
-                    queue.peek().right = leftTmp;
+                    queue.peek().left = queue.peek().right;
+                    queue.add(queue.peek().left);
+                    
+                    queue.peek().right = tmp;
                     queue.add(queue.peek().right);
 
-                    queue.peek().left = rightTmp;
-                    queue.add(queue.peek().left);
                 }
                 queue.poll();
                 
@@ -49,6 +48,5 @@ class Solution {
         }
         
         return root;
-        
     }
 }
