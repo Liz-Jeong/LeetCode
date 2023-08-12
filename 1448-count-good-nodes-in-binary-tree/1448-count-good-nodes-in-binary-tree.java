@@ -44,4 +44,14 @@ class Solution {
         // return good nodes
         return counter;
     }
+    
+    // *Time complexity : O(N)
+    // During DFS traversal of the entire tree, we visit each node once.
+    // The time complexity is proportional to the number of nodes in the tree, which is O(N).
+    
+    // *Space complexity : O(log N == H), Height of the binary tree
+    // This is recursive implementation
+    // The space complexity is determined by the maximum number of recursive calls on the call stack at any given time.
+    // Assuming that it's balanced tree, the height is logarithmic (H = log N)
+    
 }
