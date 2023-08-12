@@ -15,20 +15,21 @@
  */
 class Solution {
     
-    int counter = 0;
+    // global var
+    //int counter = 0;
     
     public int goodNodes(TreeNode root) {
         
-        int max = Integer.MIN_VALUE;
-        
         // root node is always a good node
-        return DFS(root, max);
+        return DFS(root, root.val);
     }
     
     private int DFS(TreeNode node, int max) {
         
         // base case
-        if(node == null) return counter;
+        if(node == null) return 0;
+        
+        int counter = 0;
         
         // add count if node's val is bigger than max 
         if(node.val >= max) {
@@ -37,8 +38,8 @@ class Solution {
         }
         
         // traverse subtree
-        DFS(node.left, max);
-        DFS(node.right, max);
+        counter += DFS(node.left, max);
+        counter += DFS(node.right, max);
         
         // return good nodes
         return counter;
