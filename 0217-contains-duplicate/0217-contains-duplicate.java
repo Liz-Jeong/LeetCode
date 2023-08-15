@@ -1,6 +1,8 @@
 class Solution {
     public boolean containsDuplicate(int[] nums) {
         
+        // brute force - T : O(N2)
+        // sort + two pointer - T: O(nlogn), S : O(1) 
         Map<Integer, Integer> map = new HashMap<>();
         
         for(int num : nums) {
@@ -9,7 +11,6 @@ class Solution {
         }
         
         return false;
-        
         
 //         HashSet<Integer> set = new HashSet<>();
         
