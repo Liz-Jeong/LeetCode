@@ -10,15 +10,16 @@ class Solution {
         }
         
         // MinHeap with size k
-        Queue<Integer> minHeap = new PriorityQueue<>((a, b) -> map.get(b) - map.get(a));
+        Queue<Integer> minHeap = new PriorityQueue<>((a, b) -> map.get(a) - map.get(b));
         
         // add key into the minHeap, but ordered by value
         for(int key : map.keySet()) {    // 1:3, 2:2, 3:1
             minHeap.add(key);
+            if(minHeap.size() > k) minHeap.poll();
         }
         
         int index = 0;
-        for(int i = 0; i < k; i++) {
+        while(!minHeap.isEmpty()) {
             res[index++] = minHeap.poll();
         }
         
